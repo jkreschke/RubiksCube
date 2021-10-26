@@ -12,13 +12,13 @@ class Face{
     public:
     Face();
     Face(int val);
-    void rotateCW();
+    void RotateCW();
     void RotateCCW();
-    std::vector<int> getRow(unsigned row);
-    std::vector<int> getCol(unsigned col);
-    void replaceRow(unsigned row, std::vector<int> new_row);
-    void replaceCol(unsigned row, std::vector<int> new_col);
-    bool isSame();
+    std::vector<int> GetRow(unsigned row);
+    std::vector<int> GetCol(unsigned col);
+    void ReplaceRow(unsigned row, std::vector<int> new_row);
+    void ReplaceCol(unsigned row, std::vector<int> new_col);
+    bool IsSame();
 
     private:
     int values_ [2][2];
