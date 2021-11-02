@@ -23,27 +23,39 @@ void Face::RotateCW(){
     int temp = values_[0][0];
     values_[0][0] = values_[1][0];
     values_[1][0] = values_[1][1];
-    values_[1][1] = values[0][1];
-    values[0][1] = temp;
+    values_[1][1] = values_[0][1];
+    values_[0][1] = temp;
 }
 
 void Face::RotateCCW(){
     int temp = values_[0][0];
     values_[0][0] = values_[0][1];
     values_[0][1] = values_[1][1];
-    values_[1][1] = values[1][0];
-    values[1][0] = temp;
+    values_[1][1] = values_[1][0];
+    values_[1][0] = temp;
 }
 
-void Face::ReplaceRow(unsigned row, std::vector<int> new_row){
-    for(unsigned j = 0; j < 2; j++){
-        values_[row][j] = new_row[j];
+void Face::ReplaceRow(unsigned row, std::vector<int> new_row, bool reversed){
+    if (reversed){
+        for (unsigned j = 0; j < 2; j++){
+            values_[row][j] = new_row[1 - j];
+        }
+    } else{
+        for(unsigned j = 0; j < 2; j++){
+            values_[row][j] = new_row[j];
+        }
     }
 }
 
-void Face::ReplaceCol(unsigned col, std::vector<int> new_col){
-    for(unsigned i = 0; i < 2; i++){
-        values_[i][col] = new_col[i];
+void Face::ReplaceCol(unsigned col, std::vector<int> new_col, bool reversed){
+    if (reversed){
+        for(unsigned i = 0; i < 2; i++){
+            values_[i][col] = new_col[1 - i];
+        }
+    } else{
+        for(unsigned i = 0; i < 2; i++){
+            values_[i][col] = new_col[i];
+        }
     }
 }
 
@@ -82,4 +94,3 @@ std::ostream & operator<<(std::ostream & os, const Face & face){
     os << " --- --- " << std::endl;
     return os;
 }
-

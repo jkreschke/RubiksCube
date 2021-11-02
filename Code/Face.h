@@ -7,6 +7,7 @@
 
 #pragma once
 #include <vector>
+#include <iostream>
 
 class Face{
     public:
@@ -16,12 +17,12 @@ class Face{
     void RotateCCW();
     std::vector<int> GetRow(unsigned row);
     std::vector<int> GetCol(unsigned col);
-    void ReplaceRow(unsigned row, std::vector<int> new_row);
-    void ReplaceCol(unsigned row, std::vector<int> new_col);
+    void ReplaceRow(unsigned row, std::vector<int> new_row, bool reversed = false);
+    void ReplaceCol(unsigned row, std::vector<int> new_col, bool reversed = false);
     bool IsSame();
 
-    private:
     int values_ [2][2];
-    
+
+    friend std::ostream & operator<<(std::ostream & os, const Face & face);
 };
 
